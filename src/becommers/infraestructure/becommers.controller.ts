@@ -8,9 +8,17 @@ import {
   Put,
 } from '@nestjs/common';
 import { UpdateBecommerDto } from '../application/BecommersDTOs';
+import { BecommerService } from '../application/becommer.service';
 
 @Controller('becommers')
 export class BecommersController {
+  constructor(private becommersService: BecommerService) {}
+
+  @Get('/tasks')
+  getTasks() {
+    return this.becommersService.getTasks();
+  }
+
   @HttpCode(HttpStatus.OK)
   @Get('/:id')
   getBecommer(@Param('id', ParseIntPipe) id: number) {

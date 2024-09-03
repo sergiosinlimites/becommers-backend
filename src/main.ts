@@ -5,9 +5,6 @@ import { ResponseInterceptor } from './common/interceptors/ResponseInterceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors({
-    origin: '*',
-  });
 
   app.useGlobalInterceptors(new ResponseInterceptor());
 
@@ -18,6 +15,11 @@ async function bootstrap() {
       disableErrorMessages: process.env.NODE_ENV == 'production',
     }),
   );
+
+  app.enableCors({
+    origin: '*',
+  });
+
   await app.listen(3000);
 }
 bootstrap();
