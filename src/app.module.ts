@@ -9,6 +9,8 @@ import { BecommersModule } from './becommers/becommers.module';
 import { EventsModule } from './events/events.module';
 import config from './config';
 import { DatabaseModule } from './database/database.module';
+import { CommunitiesModule } from './communities/communities.module';
+import { InterestsModule } from './interests/interests.module';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { DatabaseModule } from './database/database.module';
     BecommersModule,
     EventsModule,
     DatabaseModule,
+    CommunitiesModule,
+    InterestsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
