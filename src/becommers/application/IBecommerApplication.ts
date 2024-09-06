@@ -1,9 +1,10 @@
-import { QueryResult } from 'pg';
-import { CreateBecommerDto, UpdateBecommerDto } from './BecommersDTOs';
+import { CreateUserDto, UpdateUserDto } from './user.dto';
+import { User } from '../infraestructure/user.entity';
+import { DeleteResult } from 'typeorm';
 
 export interface IBecommersApplication {
-  createBecommer(newBecommer: CreateBecommerDto): Promise<CreateBecommerDto>;
-  updateBecommer(becommer: UpdateBecommerDto): Promise<UpdateBecommerDto>;
-  deleteBecommer(id: string): Promise<boolean>;
-  getTasks(): Promise<QueryResult<any>>;
+  getBecommer(id: number): Promise<User>;
+  createBecommer(newBecommer: CreateUserDto): Promise<User>;
+  updateBecommer(id: number, becommer: UpdateUserDto): Promise<User>;
+  deleteBecommer(id: string): Promise<DeleteResult>;
 }
